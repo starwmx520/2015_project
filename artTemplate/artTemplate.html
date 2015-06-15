@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>altTemplate</title>
+  <meta name="description" content="" />
+  <meta name="author" content="star" />
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+    <script src="../js/jquery.1.js"></script>
+    <script src="../js/template.js"></script>
+</head>
+
+<body>
+<script>
+var obj={err:0,
+	data:[
+	    {id:1,name:'star',age:23,info:[1,2,3]},
+	    {id:2,name:'sta2r',age:22,info:[4,5,6]},
+	    {id:3,name:'star3',age:21,info:[7,8,9]},
+	    {id:4,name:'star4',age:24,info:[10,11,12]}
+    ],
+    date:(new Date).toString(),
+    user:{username:'star',pwd:'star'},
+    message:"<p>This is a post about &lt;p&gt; tags</p>"
+};
+</script>
+
+<!--as obj i 表示循环的上下文对象， i表示循环的index-->
+<script type="text/html" id="template_1">
+{{err}}
+{{each data as obj i}}
+    <li>{{ uppercase(obj.name)}} /{{data[i].name}}
+    	{{if obj.name=="star"}}
+    	    {{obj.name}}==star
+    	{{/if}}
+    </li>       
+{{/each}}
+</script>
+
+<!--each 简写方式  $index:循环index  $value 循环对象-->
+<script type="text/html" id="template_2">
+{{message}}
+{{#message}}
+{{each data}}
+    <li>{{$index}}  -  {{$value.name | uppercase}}</li>
+{{/each}}
+</script>
+
+<!--include 'XX'-->
+<script type="text/html" id="template_3">
+{{err}}
+{{date | dateFormat:'yyyy MM dd hh:mm:ss'}}
+{{include 'template_list'}}	
+</script>
+<script type="text/html" id="template_list">
+{{each data}}
+    <li>{{$index}}--{{$value.name}}</li>    
+{{/each}}	
+</script>
+
+
+<script>
+//注入器
+//有两种用法  {{XX | 注入器}}  {{ 注入器(XX)}}
+template.helper('uppercase',function(data,format){
+	return data.charAt(0).toUpperCase()+data.substr(1);
+})
+//时间注入
+template.helper('dateFormat',function(date,format){
+	date = new Date(date);
+    var map = {
+        "M": date.getMonth() + 1, //月份 
+        "d": date.getDate(), //日 
+        "h": date.getHours(), //小时 
+        "m": date.getMinutes(), //分 
+        "s": date.getSeconds(), //秒 
+        "q": Math.floor((date.getMonth() + 3) / 3), //季度 
+        "S": date.getMilliseconds() //毫秒 
+    };
+    format = format.replace(/([yMdhmsqS])+/g, function(all, t){
+        var v = map[t];
+        if(v !== undefined){
+            if(all.length > 1){
+                v = '0' + v;
+                v = v.substr(v.length-2);
+            }
+            return v;
+        }
+        else if(t === 'y'){
+            return (date.getFullYear() + '').substr(4 - all.length);
+        }
+        return all;
+    });
+    return format;
+})
+
+onload=function(){
+	//传递模板id 和数据模型
+	var html=template('template_1',obj);	
+	$('body').append(html)
+	
+	var html2=template("template_2",obj);	
+	$('body').append(html2);
+	
+	//compile用法：传递模板内容，
+	var compile=template.compile($("#template_2").html());
+	$('body').append(compile(obj))
+	//render 用法
+	var render=template.render($("#template_2").html());
+	$('body').append(render(obj))
+	
+	//嵌入子模板
+	var html3=template('template_3',obj);
+	$('body').append(html3);
+	
+}
+</script>
+</body>
+</html>
