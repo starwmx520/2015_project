@@ -1,0 +1,152 @@
+doctype html
+html
+    head
+       meta(charset="utf-8")
+       meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no")
+       meta(name="descripition",content="star")
+       meta(name="author",content="wangyuan")
+       style
+       link(rel="stylesheet",type="text/css",href="css/index.css")
+       script(src="js/")
+       title jade
+    body
+       //单排注释
+       // #div_cc
+       <!--[if ie 8]>
+           
+       <![end if]-->
+       h1 jade
+       br
+       hr
+       #div_1  div可以省略div
+       h1#h1_1.c_h1(data-id="id1") h1
+       a.link_1(href="http:",title="a_title")  link
+       input(name="name",type="input",value="moren")
+       input(type="checkbox",name="checkbox1",checkbox)
+       
+       p.
+         fdsadfsa<b>fdsaa</b>
+         fdsafdsa
+       p 
+          |fdsafda
+          |fdsafdsa
+          <a href="#">a</a>
+          #div_2 div_2
+       //声明变量
+       - var name="star"
+       - var con="<script>console.log('a');</script>"
+       h1 #{name.toUpperCase()}
+       h1 !{con}
+       h1=con
+       h1!=con
+       input(vale="#{newdata}")
+       input(value=newdata)
+
+       //转义
+       p \#{name} \!{name}
+
+       //流程
+       - var obj={err:0,name:'star',data:[   {id:1,name:'star'},{id:2,name:'starb'}] }
+       //for in       
+       - for (var k in obj)
+         p=obj[k]
+       // each 
+       - each value,key in obj
+         p #{key}:#{value}
+       - each value,key in obj.data
+         p #{key}:#{value.name}
+       - each item in obj.data
+           li=item.id
+              p=item.name
+              p= item.id=='1'?'id=1':'id!=1'
+       //while 
+       - var index=0
+       while index<5
+           li=index++ 
+             p=index
+       //if
+       -var srr=[1,2,3,3,4,5]
+       if index>4
+          li index>4
+             p=index
+             b=srr.join(',')
+       else if(index>1)
+           li 1
+       else 
+           li  0
+       
+       unless !index
+          li \unless
+
+       - var uname='star'
+       case uname
+            when 'star'
+                p start
+            when 'wang'
+                p wang
+            default
+                p default
+
+
+       //mixin
+       mixin mi1
+           p mi1  \mixin
+       //引用
+       +mi1
+
+       /传递值 
+       mixin  xi2(name,age)
+          p=name 
+          p #{age}
+       +xi2('star',33)
+       //嵌套
+       mixin xi3(data)
+           h1 #{data.name}
+           +xi2(data.name,data.age)
+       +xi3({name:'star',age:'333'})
+
+       //传递块
+       mixin xi4(gon)
+          h3=gon
+          if block
+             block
+          else
+             p no team
+       +xi4('star')
+          p good job!
+
+       //传递属性
+       mixin xattr(name)
+          p(class!=attributes.class) #{name}
+       +xattr('name')(class="cl_1")
+       //传递多属性
+       mixin xattrs(name)
+          p&attributes(attributes) #{name}
+       +xattrs('xattrs')(class="cl_3",id="id_div3")
+       //不确定参数个数
+       mixin xi5(name,...items)
+            ul(class="#{name}")
+                each item in items
+                   li=item
+       +xi5('xi5','node','jade','angular')
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+

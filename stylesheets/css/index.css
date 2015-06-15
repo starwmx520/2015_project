@@ -1,0 +1,83 @@
+@import url(maincss.css);
+/* line 1, ../../sass/css/mainscss.scss */
+.mainscss {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 5, ../../sass/css/index.scss */
+.text-left, .important, body {
+  text-align: left;
+}
+
+/* line 6, ../../sass/css/index.scss */
+.text-right, .important {
+  text-align: right;
+}
+
+/* line 7, ../../sass/css/index.scss */
+.page_1 {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 13, ../../sass/css/index.scss */
+.mm .text-left, .mm .important, .mm body {
+  color: #ff0;
+}
+
+/* line 24, ../../sass/css/index.scss */
+body {
+  font-size: 14px;
+  border-top: 1px #ccc solid;
+}
+
+/* line 29, ../../sass/css/index.scss */
+.border-top_10 {
+  border-top: 10px #ccc solid;
+  font: 14px/1.4em;
+}
+
+/* line 39, ../../sass/css/index.scss */
+.link_1 {
+  color: #ccc;
+  margin: 5px 10px;
+}
+
+/* line 43, ../../sass/css/index.scss */
+.link_1:hover {
+  color: #333;
+  margin: 20px 30px;
+}
+
+/* line 51, ../../sass/css/index.scss */
+h1 {
+  font-size: 2em;
+}
+
+/* line 51, ../../sass/css/index.scss */
+h2 {
+  font-size: 1.5em;
+}
+
+/* line 51, ../../sass/css/index.scss */
+h3 {
+  font-size: 1.2em;
+}
+
+/* line 58, ../../sass/css/index.scss */
+.nav {
+  font-size: 12px;
+}
+/* line 60, ../../sass/css/index.scss */
+.nav li {
+  float: left;
+}
+/* line 63, ../../sass/css/index.scss */
+.nav a {
+  display: block;
+}
+/* line 65, ../../sass/css/index.scss */
+.nav a:hover {
+  color: #ccc;
+}

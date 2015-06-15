@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="descripition" content="star">
+    <meta name="author" content="wangyuan">
+    <style></style>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="js/"></script>
+    <title>jade</title>
+  </head>
+  <body>
+    <!--单排注释-->
+    <!-- #div_cc--><!--[if ie 8]>
+    <![end if]-->
+    <h1>jade</h1><br>
+    <hr>
+    <div id="div_1"> div可以省略div</div>
+    <h1 id="h1_1" data-id="id1" class="c_h1">h1</h1><a href="http:" title="a_title" class="link_1"> link</a>
+    <input name="name" type="input" value="moren">
+    <input type="checkbox" name="checkbox1" checkbox>
+    <p>
+      fdsadfsa<b>fdsaa</b>
+      fdsafdsa
+    </p>
+    <p>
+       
+      fdsafda
+      fdsafdsa
+      <a href="#">a</a>
+      <div id="div_2">div_2</div>
+    </p>
+    <!--声明变量-->
+    <h1>STAR</h1>
+    <h1><script>console.log('a');</script></h1>
+    <h1>&lt;script&gt;console.log('a');&lt;/script&gt;</h1>
+    <h1><script>console.log('a');</script></h1>
+    <input vale="undefined">
+    <input>
+    <!--转义-->
+    <p>#{name} !{name}</p>
+    <!--流程-->
+    <!--for in       -->
+    <p>0</p>
+    <p>star</p>
+    <p>[object Object],[object Object]</p>
+    <!-- each -->
+    <p>err:0</p>
+    <p>name:star</p>
+    <p>data:[object Object],[object Object]</p>
+    <p>0:star</p>
+    <p>1:starb</p>
+    <li>1
+      <p>star</p>
+      <p>id=1</p></li>
+    <li>2
+      <p>starb</p>
+      <p>id!=1</p></li>
+    <!--while -->
+    <li>0
+      <p>1</p></li>
+    <li>1
+      <p>2</p></li>
+    <li>2
+      <p>3</p></li>
+    <li>3
+      <p>4</p></li>
+    <li>4
+      <p>5</p></li>
+    <!--if-->
+    <li>index>4
+      <p>5</p><b>1,2,3,3,4,5</b>
+    </li>
+    <li>\unless</li>
+    <p>start</p>
+    <!--mixin-->
+    <!--引用-->
+        <p>mi1  \mixin</p>/传递值 
+        <p>star</p>
+        <p>33</p>
+    <!--嵌套-->
+        <h1>star</h1>
+            <p>star</p>
+            <p>333</p>
+    <!--传递块-->
+        <h3>star</h3>
+        <p>good job!</p>
+    <!--传递属性-->
+        <p class="cl_1">name</p>
+    <!--传递多属性-->
+        <p id="id_div3" class="cl_3">xattrs</p>
+    <!--不确定参数个数-->
+        <ul class="xi5">
+          <li>node</li>
+          <li>jade</li>
+          <li>angular</li>
+        </ul>
+  </body>
+</html>

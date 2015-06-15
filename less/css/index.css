@@ -1,0 +1,9 @@
+.color_1{background:#000;}
+.bg_1{background:url(../images/g.jpg)}
+
+
+
+body{
+	.bg_1
+}
+

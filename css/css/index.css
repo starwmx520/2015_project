@@ -1,0 +1,10 @@
+.text-left, .important {
+  text-align: left; }
+
+.text-right, .important {
+  text-align: right; }
+
+.mm .text-left, .mm .important {
+  color: #ff0; }
+
+/*# sourceMappingURL=index.css.map */

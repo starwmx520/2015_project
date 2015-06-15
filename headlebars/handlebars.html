@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>handlebars</title>
+  <meta name="description" content="" />
+  <meta name="author" content="star" />
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+  <script src="../js/jquery.1.js"></script>
+  <script src="../js/handlebars-v3.0.3.js"></script>
+</head>
+
+<body>
+<div class="div_template1"></div>
+<script>
+function temp(html,data){
+    	//用compile创建模板，参数是渲染html。返回一个函数，参数是数据模型 。执行返回函数会生成html.
+    	var temp=	Handlebars.compile($(html).html())
+    	return temp(data);    	
+}
+var obj={err:0,
+	data:[
+	    {id:1,name:'star',age:23,info:[1,2,3]},
+	    {id:2,name:'sta2r',age:22,info:[4,5,6]},
+	    {id:3,name:'star3',age:21,info:[7,8,9]},
+	    {id:4,name:'star4',age:24,info:[10,11,12]}
+    ],
+    user:{username:'star',pwd:'star'},
+    message:"<p>This is a post about &lt;p&gt; tags</p>"
+};
+
+$(function(){
+	//普通渲染
+    $('.div_template1').html(temp('#handlebars_1',obj));
+    //循环渲染 each
+    $('.div_template1').append(temp('#handlebars_2',obj));   
+    $('.div_template1').append(temp('#handlebars_3',obj));   
+    $('.div_template1').append(temp('#handlebars_4',obj));  
+    $('.div_template1').append(temp('#handlebars_5',obj));  
+    $('.div_template1').append(temp('#handlebars_6',obj));  
+})
+//向Handlebars 注入方法(也就是模板中可以使用的方法)
+Handlebars.registerHelper('addOne',function(index){
+    return 	index+1;
+})
+/*注入方法函数内可以给this添加属性。在循环输出内可以访问到。
+ *循环上用此方法会在循环的上下文创建一个属性。在此上下文内可以访问到。../XX也可以访问到。 
+ */
+Handlebars.registerHelper('addIndex',function(index){
+	this._index=index+1;
+	return this._index;
+})
+/*可以创建模板标签，参数也可以有多个，最后为options
+ * 比较返回不同的操作。
+ * 这里是比较大小，大执行fn  小呢	inverse 对应的max  else 中的分支。
+ */
+Handlebars.registerHelper('max',function(v1,v2,options){
+	if(v1>=v2){
+		return options.fn(this);
+	}else{
+		return options.inverse(this);
+	}
+})
+
+
+</script>
+<script type="text/handlebars-template" id="handlebars_1">
+	<!--语法和angular类似，都是双括号-->
+	<p data-user="{{user.username}}">{{user.username}}:{{user.pwd}}</p>
+	<!--对于数据模型中的html代码会原型输出 -->
+	<p>{{message}}</p>
+	<!--引用 三括号可以识别<p></p>这样的标签-->
+	{{{message}}}
+	
+</script>
+<!--循环 each-->
+<script type="text/handlebars-template" id="handlebars_2">
+<ul>
+	{{#each data}}
+	    <li>
+	    	id:{{this.id}}name:{{this.name}}age:{{this.age}}
+	    </li>
+	{{/each}}
+</ul>
+</script>
+<!--each 中的this 表示当前的循环元素，是对象可以this.XX 或XX 也可以。
+    each 嵌套 内可以用../来获取外层的属性 	
+    @index 当前索引
+    addOne 是注入到模板里的方法，参数是后边的index 返回一个值。来替换这里的输出 
+-->
+<script type="text/handlebars-template" id="handlebars_3">
+	<ul>
+	{{#each data}}
+	    <li>
+	    	{{addOne @index}}
+	    	{{this.id}}name:{{this.name}}age:{{this.age}}
+	    	{{#each info}}
+	    	    外层的name:{{../name}}{{this}}
+	    	{{/each}}
+	    </li>
+	{{/each}}
+    </ul>
+</script>
+
+<script type="text/handlebars-template" id="handlebars_4">
+	<ul>
+		{{#each data}}
+		    <p>{{addIndex @index}}</p>
+		    {{#each info}}
+		        <p>{{../_index}}/{{@index}}</p>
+		    {{/each}}
+		{{/each}}
+	</ul>
+</script>
+<!-- #if 不能用表达式如比较大小等-->
+<script type="text/handlebars-template" id="handlebars_5">
+	<ul>
+		{{#each data}}
+		    {{#if age}}
+		       <li>{{age}}</li>
+		    {{/if}}
+		{{/each}}
+	</ul>
+</script>
+<script type="text/handlebars-template" id="handlebars_6">
+	<ul>
+		{{#each data}}
+		    {{#max age 21}}
+		        <li>{{age}}>=21</li>
+		    {{else}}
+		        <li>{{age}}<21</li>
+		    {{/max}}
+		{{/each}}
+	</ul>
+</script>
+</body>
+</html>

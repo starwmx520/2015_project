@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>ejs</title>
+  <meta name="description" content="" />
+  <meta name="author" content="star" />
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+   <script src="../js/jquery.1.js"></script>
+  <script src="../js/ejs_production.js"></script>
+</head>
+
+<body>
+<div id="id_div1"></div>
+<script>
+var obj={err:0,
+	data:[
+	    {id:1,name:'star',age:23,info:[1,2,3]},
+	    {id:2,name:'sta2r',age:22,info:[4,5,6]},
+	    {id:3,name:'star3',age:21,info:[7,8,9]},
+	    {id:4,name:'star4',age:24,info:[10,11,12]}
+    ],
+    user:{username:'star',pwd:'star'},
+    message:"<p>This is a post about &lt;p&gt; tags</p>"
+};
+//创建实例模板为url  render为渲染参数为数据。
+var html = new EJS({url: 'template/ejs.html'}).render(obj);
+$('body').append(html);
+
+
+//创建实例 update 修改现在的标签内容，需要传递id名和数据。
+new EJS({url: 'template/ejs.html'}).update("id_div1",obj)
+</script>
+
+
+<script type="text/template-ejs" id="template_1">
+<h1><%= err %></h1>
+<ul>
+    <% for(var i=0; i<data.length; i++) { %>
+        <li>
+            <a href='supplies/<%= data[i].id %>'>
+                <%= data[i].name %>
+            </a>
+        </li>
+    <% } %>
+</ul>	
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+//导入值也可使用变量@{XXX}来定义路径。
+@import "color.css";//导入css
+@import "number";//导入less
+
+/*混合 类中引用 类*/
+.bg_1{background:url("@{images}g.jpg")}//背景图片使用变量需要用@{XXx}来使用，url必须有引号
+
+
+//定义常量 
+/*变量使用通常在值中，可以执行+ - * / 还可以直接和其他拼接 : 使用就是@XXX
+ *@{XXX} 这种方式的使用用在如：类名，背景图片，import路径中。属性名 
+ */
+@images:'../../images/';//定义图片路径
+@color:#ccc;
+@font14:14px;
+@font16:16px;
+@font18:18px;
+@font20:20px;
+@bi:10%;
+@pro_color:color;
+//运算 
+@color2:@color/3;//常量可以使用+ /  ;
+@color3:@color+#333333;  //可用#色值 
+@bi1:@bi*12;
+@bi2:@bi+@bi;
+@px1:1px;
+@px10:@px1*10;
+@px2:@px1+1;
+//函数
+.fn_percentage{
+  width:percentage(0.5);//把小数转换成百分比
+}
+.fn_saturate{
+  color:saturate(@color,5%);//饱和度增加5%
+}
+.fn_lighten{
+  color:lighten(@color,25%);//亮度降低25%
+}
+.fn_spin{
+  color:spin(@color,8);//色相增加8
+}
+
+
+
+//嵌套
+//样式内用&:after &:before  &:hover 
+//类{}内可用&来表示当前的类名
+.div_1{  
+  color:@color+#111;
+  &:after{//此标签的after样式
+    content:'after';
+    display:block;
+  }
+  p{
+    font-size:20px;
+  }
+  h1{
+      font-size:@font20; 
+  }
+  .a{
+    padding:10px;color:red;
+    &:hover{//样式行内修饰类样式
+      color:#fff;
+    }
+  } 
+}
+//作用域 scope 和js函数类似，内部可定义自己的变量，
+.link_1{  
+  @color:orange;
+  .div_1 > .a;  //引用嵌套样式内的 . 或# (引用a标签样式会报错)
+  color:@color; 
+}
+.num_1{
+  font-size:@number_5*3px;//使用导入的less变量
+}
+.number_@{number_5}{//变量当类名引用规则：@{XXX} 
+  font-size:@number_5*2px;
+  @{pro_color}:@color;//变量当属性名用
+}
+
+//extend
+/*和直接引用类是不同的，引用类是把目标内的样式复制到本类下。
+ *继承是在目标引用类名上添加上本类 
+ */
+.nav li{
+  &:extend(.inline);
+  background:blue; 
+}
+.inline {
+  color: red;
+}
+.mixin{.inline;}
+
+/*参数(@XX:XX;@xx:XX)  多个参数可用; 或,来分开 
+ *参数默认可以不传， 也可以传，多个参数可用;或，来分开
+ * 如果有多个参数，只需修改其中的一个：@XX:XX;这样  
+ *@arguments用来获取所有参数 
+ */
+
+.fn_1(@bg: #f5f5f5, @color: #900) {
+  background: @bg;
+  color: @color;
+}
+.border-radius(@radius:4px){
+  -webkit-border-radius:@radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.wrap(){  text-wrap: wrap;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.box-shadow(@x: 0; @y: 0; @blur: 1px; @color: #000) {
+  -webkit-box-shadow: @arguments;
+     -moz-box-shadow: @arguments;
+          box-shadow: @arguments;
+}
+.fn1{
+  .fn_1();//不传递参数用默认参数
+  .border-radius();
+  .wrap;
+}
+.fn2{
+  .fn_1(#ccc,#fff);//传递参数
+  .border-radius(3px);
+  .box-shadow(5px,5px,@color:red);
+}
+
+
+
+
+
+
+
+
+
+body{ 
+  .bg_1;
+  color:@color2;
+}

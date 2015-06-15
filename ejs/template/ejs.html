@@ -1,0 +1,13 @@
+<h1><%= err %></h1>
+<ul>
+    <% for(var i=0; i<data.length; i++) { %>
+        <li>
+            <a href='supplies/<%= data[i].id %>'>
+                <%= data[i].name %>
+            </a>
+            <% if(data[i].name=='star') {%>
+            	<p><%=data[i].name%>==star</p>
+            <%}%>
+        </li>
+    <% } %>
+</ul

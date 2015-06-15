@@ -1,0 +1,99 @@
+@import "color.css";
+@charset "utf-8";
+/*混合 类中引用 类*/
+.bg_1 {
+  background: url("../../images/g.jpg");
+}
+/*变量使用通常在值中，可以执行+ - * / 还可以直接和其他拼接 : 使用就是@XXX
+ *@{XXX} 这种方式的使用用在如：类名，背景图片，import路径中。属性名 
+ */
+.fn_percentage {
+  width: 50%;
+}
+.fn_saturate {
+  color: #cfc9c9;
+}
+.fn_lighten {
+  color: #ffffff;
+}
+.fn_spin {
+  color: #cccccc;
+}
+.div_1 {
+  color: #dddddd;
+}
+.div_1:after {
+  content: 'after';
+  display: block;
+}
+.div_1 p {
+  font-size: 20px;
+}
+.div_1 h1 {
+  font-size: 20px;
+}
+.div_1 .a {
+  padding: 10px;
+  color: red;
+}
+.div_1 .a:hover {
+  color: #fff;
+}
+.link_1 {
+  padding: 10px;
+  color: red;
+  color: #ffa500;
+}
+.link_1:hover {
+  color: #fff;
+}
+.num_1 {
+  font-size: 15px;
+}
+.number_5 {
+  font-size: 10px;
+  color: #cccccc;
+}
+/*和直接引用类是不同的，引用类是把目标内的样式复制到本类下。
+ *继承是在目标引用类名上添加上本类 
+ */
+.nav li {
+  background: blue;
+}
+.inline,
+.nav li {
+  color: red;
+}
+.mixin {
+  color: red;
+}
+/*参数(@XX:XX;@xx:XX)  多个参数可用; 或,来分开 
+ *参数默认可以不传， 也可以传，多个参数可用;或，来分开
+ * 如果有多个参数，只需修改其中的一个：@XX:XX;这样  
+ *@arguments用来获取所有参数 
+ */
+.fn1 {
+  background: #f5f5f5;
+  color: #990000;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-wrap: wrap;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.fn2 {
+  background: #cccccc;
+  color: #ffffff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 5px 5px 1px #ff0000;
+  -moz-box-shadow: 5px 5px 1px #ff0000;
+  box-shadow: 5px 5px 1px #ff0000;
+}
+body {
+  background: url("../../images/g.jpg");
+  color: #444444;
+}

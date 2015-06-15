@@ -1,0 +1,46 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+/*
+*引用css 或scss 
+*/
+@import "compass/reset";
+@import "variable";
+
+*{
+	font-size:$font16;
+	font-family:$fm;
+}
+/*
+*
+*/
+
+.header {
+	font:{
+	    family:$fm;
+	    size:$font14;
+	}
+    color:shl(250,100%,50%);
+    nav{
+       width:100%;
+       height:50px;
+       li{
+          width:20%;float:left;
+          a{
+             color:red;
+             &:hover{
+                color:blue;
+             }
+          }          
+       }
+    }       
+}
+/*
+*bian lian yong yu shu xing min huo class name
+*/
+
+.div_1{
+       border-#{$top}:1px #ccc solid;
+    }

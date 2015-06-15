@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>underscore</title>
+  <meta name="description" content="" />
+  <meta name="author" content="star" />
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+    <script src="../js/jquery.1.js"></script>
+    <script src="../js/underscore-min.js"></script>
+</head>
+
+<body>
+<script>
+var obj={err:0,
+	data:[
+	    {id:1,name:'star',age:23,info:[1,2,3]},
+	    {id:2,name:'sta2r',age:22,info:[4,5,6]},
+	    {id:3,name:'star3',age:21,info:[7,8,9]},
+	    {id:4,name:'star4',age:24,info:[10,11,12]}
+    ],
+    user:{username:'star',pwd:'star'},
+    message:"<p>This is a post about &lt;p&gt; tags</p>"
+};
+onload=function(){
+	//方法一：传递模板内容，和数据返回渲染后内容
+	var html=_.template($("#template_1").html(),obj);
+	$('body').append(html);
+	//方法二：传递模板内容，返回函数，调用函数传递数据
+	var template=_.template($("#template_1").html());
+	$('body').append(template(obj))
+	
+	$('body').append(_.template($('#template_2').html(),obj));
+}
+
+</script>
+
+<script type="text/template" id="template_1">
+	<%_.each(data,function(item){%>
+		<li>
+			<%=item.id%> <%=item.name%>
+		</li>
+	<%})%>
+</script>
+
+<script type="text/template" id="template_2">
+<!--for 循环-->
+	<% for(var i=0;i<data.length;i++){%>
+		<li>
+			<% if(data[i].name=="star"){%>
+			    name==star	
+			<%}%>
+			<%=data[i].id%><%=data[i].name%>
+		</li>
+	<%}%>
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <title>jquery.tmpl.min</title>
+  <meta name="description" content="" />
+  <meta name="author" content="star" />
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+    <script src="../js/jquery.1.js"></script>
+    <script src="../js/jquery.tmpl.min.js"></script>
+</head>
+
+<body>
+<script>
+var obj={err:0,
+	data:[
+	    {id:1,name:'star',age:23,info:[1,2,3]},
+	    {id:2,name:'sta2r',age:22,info:[4,5,6]},
+	    {id:3,name:'star3',age:21,info:[7,8,9]},
+	    {id:4,name:'star4',age:24,info:[10,11,12]}
+    ],
+    date:(new Date).toString(),
+    user:{username:'star',pwd:'star'},
+    message:"<p>This is a post about &lt;p&gt; tags</p>"
+};
+$(function(){
+	
+	$.tmpl($("#template_1").html(),obj).appendTo('body')
+})
+</script>
+
+<script type="text/template" id="template_1">
+${err}
+${message}
+{{if err==0 && data.length>0}}
+    err==0  data.length>0
+{{/if}}
+{{each data}}
+    <li>${$value.name}</li>
+{{/each}}
+
+</script>
+
+</body>
+</html>

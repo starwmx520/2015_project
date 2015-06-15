@@ -1,0 +1,70 @@
+@import  "maincss.css";
+@import  "mainscss";
+
+
+.text-left           { text-align: left; }
+.text-right           { text-align: right; }
+.page_1{width:100%;height:100%;}
+.important {
+  @extend .text-left;
+  @extend .text-right;
+}
+.mm {
+  .text-left{
+    color:#ff0;
+  }
+}
+
+//变量
+$fontsize:14px !default;
+$lineheight:1.4em!default;
+$bordernametop:top;
+
+
+body{
+	 @extend .text-left;
+	 font-size:$fontsize;
+	 border-#{$bordernametop}:1px #ccc solid;
+}
+.border-#{$bordernametop}_10{
+	border-#{$bordernametop}:10px #ccc solid;
+	font:#{$fontsize/#{$lineheight}};
+}
+
+$px:5px 10px 20px 30px;
+$px2:5px 10px,20px 30px;
+$px3:(5px 10px) (20px 30px);
+$linkcolor:#ccc #333 ;
+
+.link_1{
+color:nth($linkcolor,1);
+margin:nth($px2,1);
+}
+.link_1:hover{
+	color:nth($linkcolor,2);
+	margin:nth($px3,2);
+}
+
+
+$hs:(h1:2em,h2:1.5em,h3:1.2em);
+@each $h,$size in $hs{
+	#{$h}{
+	  font-size:$size;
+	}
+
+}
+
+
+.nav{
+	font-size:12px;
+	li{
+	    float:left;
+	}
+	a{
+	    display:block;
+	    &:hover{
+	        color:#ccc;
+	    }
+	}
+
+}

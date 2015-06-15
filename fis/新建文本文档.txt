@@ -1,0 +1,5 @@
+fis是由百度开发的前端工具。
+----安装 
+npm install fis -g  //有时安装不上
+npm install fis -g --registry=http://registry.npm.taobao.org/ --disturl=https://npm.taobao.org/dist
+

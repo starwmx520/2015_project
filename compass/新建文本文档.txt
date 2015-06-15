@@ -1,0 +1,28 @@
+compass  
+
+
+npm install compass -g 
+
+compass -v
+
+创建项目
+compass create  项目名
+
+结构：
+comfig.br  配置文件
+sass  文件夹存放源文件
+stylesheets 编译后css
+
+编译
+compass compile  
+将sass 下的编译成css 保存在stylesheets 下
+默认编译会有大量注释，
+compass compile --output-style compressed  压缩编译后的css
+
+除了使用命令行参数，还可以在配置文件config.rb中指定编译模式。
+output_style = :expanded  //编译后保存原格式，  
+其他值还包括:nested、:compact和:compressed
+
+
+自动编译
+compass watch
