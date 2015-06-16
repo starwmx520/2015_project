@@ -115,3 +115,190 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .div_1 {
   border-top: 1px #ccc solid;
 }
+
+/*!
+ *鏁扮粍鍙橀噺鐢ㄦ硶 nth 
+ */
+/* line 51, ../sass/screen.scss */
+.link1 {
+  color: #ccc;
+}
+/* line 53, ../sass/screen.scss */
+.link1:hover {
+  color: #333;
+}
+/* line 56, ../sass/screen.scss */
+.link1 b {
+  width: 2px;
+}
+
+/*! 鍒涘缓瀵硅薄
+ *map.get(obj,key)//return value
+ */
+/* line 64, ../sass/screen.scss */
+.h1 {
+  font-size: 20px;
+}
+
+/*!
+ *@each key ,value in obj 
+ */
+/* line 72, ../sass/screen.scss */
+.divc h1 {
+  font-size: 20px;
+}
+
+/* line 72, ../sass/screen.scss */
+.divc h2 {
+  font-size: 18px;
+}
+
+/* line 72, ../sass/screen.scss */
+.divc h3 {
+  font-size: 16px;
+}
+
+/* line 72, ../sass/screen.scss */
+.divc h4 {
+  font-size: 14px;
+}
+
+/*!
+ *shuxing quan tao
+ */
+/* line 79, ../sass/screen.scss */
+.bor_1 {
+  border-style: solid;
+  border-left-width: 1px;
+  border-left-color: red;
+  border-right-width: 2px;
+  border-right-color: #ccc;
+}
+
+/*!
+ *tiao chu qian tao 
+ */
+/* line 95, ../sass/screen.scss */
+.tao {
+  width: 100%;
+}
+/* line 97, ../sass/screen.scss */
+.tab_box {
+  width: 50%;
+  float: left;
+}
+
+/* line 102, ../sass/screen.scss */
+.tab {
+  width: 100%;
+}
+/* line 105, ../sass/screen.scss */
+.tab_left {
+  width: 50%;
+  float: left;
+}
+
+/* line 109, ../sass/screen.scss */
+.tab_right {
+  width: 50%;
+  float: right;
+}
+
+/*!
+ * mixin
+ */
+/* line 124, ../sass/screen.scss */
+.div_clear {
+  width: 100%;
+  display: block;
+  clear: both;
+}
+
+/*!
+ *mixin chan shu  
+ */
+/* line 135, ../sass/screen.scss */
+.div_pos {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+/*!
+ * --------------------------------compass -------------------------
+ */
+/* line 145, ../sass/screen.scss */
+.com_1 {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 148, ../sass/screen.scss */
+.com_2 {
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+/* line 151, ../sass/screen.scss */
+.com_3 {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
+
+/* line 154, ../sass/screen.scss */
+.com_4 {
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+}
+
+/*! layout 
+ * 
+ */
+/* line 10, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/layout/_sticky-footer.scss */
+#foter html, #foter body {
+  height: 100%;
+}
+/* line 12, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/layout/_sticky-footer.scss */
+#foter #root {
+  clear: both;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -54px;
+}
+/* line 18, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/layout/_sticky-footer.scss */
+#foter #root #root_footer {
+  height: 54px;
+}
+/* line 20, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/layout/_sticky-footer.scss */
+#foter #footer {
+  clear: both;
+  position: relative;
+  height: 54px;
+}
+
+/* line 166, ../sass/screen.scss */
+.link_2 {
+  color: #00c;
+}
+/* line 18, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.link_2:visited {
+  color: #ccc;
+}
+/* line 21, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.link_2:focus {
+  color: #cc0;
+}
+/* line 24, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.link_2:hover {
+  color: #0cc;
+}
+/* line 27, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/typography/links/_link-colors.scss */
+.link_2:active {
+  color: #c0c;
+}

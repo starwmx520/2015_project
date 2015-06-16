@@ -1,5 +1,5 @@
-@import "color.css";
 @charset "utf-8";
+@import "color.css";
 /*混合 类中引用 类*/
 .bg_1 {
   background: url("../../images/g.jpg");
@@ -42,7 +42,7 @@
 .link_1 {
   padding: 10px;
   color: red;
-  color: #ffa500;
+  color: orange;
 }
 .link_1:hover {
   color: #fff;
@@ -89,9 +89,9 @@
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-box-shadow: 5px 5px 1px #ff0000;
-  -moz-box-shadow: 5px 5px 1px #ff0000;
-  box-shadow: 5px 5px 1px #ff0000;
+  -webkit-box-shadow: 5px 5px 1px red;
+  -moz-box-shadow: 5px 5px 1px red;
+  box-shadow: 5px 5px 1px red;
 }
 body {
   background: url("../../images/g.jpg");

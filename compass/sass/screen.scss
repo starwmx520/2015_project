@@ -43,4 +43,126 @@
 
 .div_1{
        border-#{$top}:1px #ccc solid;
+}
+
+/*!
+ *数组变量用法 nth 
+ */
+.link1{
+  color:nth($col1,1);
+  &:hover{
+    color:nth($col1,2);
+  }
+  b{
+    width:length($col1)+px;    
+  }
+}
+/*! 创建对象
+ *map.get(obj,key)//return value
+ */
+$hsizes:(h1:20px,h2:18px,h3:16px,h4:14px);
+.h1{
+  font-size:map-get($hsizes,h1);
+}
+
+/*!
+ *@each key ,value in obj 
+ */
+@each $key,$value in $hsizes{
+  .divc #{$key}{
+     font-size:$value;
+  }  
+}
+/*!
+ *shuxing quan tao
+ */
+.bor_1{
+  border:{
+    style:solid;
+    left:{
+      width:1px;
+      color:red;
     }
+    right:{
+      width:2px;
+      color:#ccc;
+    }
+  }
+}
+/*!
+ *tiao chu qian tao 
+ */
+.tao{
+  width:100%;
+  @at-root .tab_box{
+    width:50%;
+    float:left;
+  }
+}
+.tab{
+  width:100%;
+  @at-root{
+    .tab_left{
+      width:50%;
+      float:left;
+    }
+    .tab_right{
+      width:50%;
+      float:right;
+    }
+  }
+}
+
+/*!
+ * mixin
+ */
+@mixin fn_clear{
+  width:100%;
+  display:block;
+  clear:both;
+}
+.div_clear{
+  @include fn_clear;
+}
+/*!
+ *mixin chan shu  
+ */
+@mixin fn_position($position:relative,$left:0px,$top:0px){
+  position:$position;
+  left:$left;
+  top:$top;
+}
+.div_pos{
+  @include fn_position(absolute);
+}
+
+
+
+/*!
+ * --------------------------------compass -------------------------
+ */
+@import "compass/css3";
+.com_1{
+  @include border-radius(5px);
+}
+.com_2{
+  @include border-corner-radius(top,left,5px);
+}
+.com_3{
+  @include opacity(0.5);
+}
+.com_4{
+  @include inline-block;
+}
+/*! layout 
+ * 
+ */
+@import "compass/layout";
+#foter{
+  @include sticky-footer(54px);
+}
+
+@import "compass/typography";
+.link_2{
+  @include link-colors(#00c, #0cc, #c0c, #ccc, #cc0);
+}
